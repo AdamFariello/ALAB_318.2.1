@@ -61,10 +61,16 @@ app.get("/get", (req,res) => {
 });
 app.post("/post", (req, res) => {
     res.write("POST example");
+    res.end(); //NEED TO INCLUDE SINCE OTHERWISE IT RANDOMLY INFINITE LOOPS
 });
+
+app.use(express.json());
+app.use(express.urlencoded());
 app.post("/some", (req,res) => {
     res.write("Hello!");
-    //console.log(res.json());
+    console.log(req);
+    console.log(res);
+    res.end();
 })
 
 app.listen(port, () => {
