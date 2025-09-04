@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404</title>
-    <link rel="stylesheet", href="./404.css">
+
+    <!--TODO: highlight logic error of css not loading since of express server-->
+    <!--
+    Error is actually: 
+    Refused to apply style from 'http://localhost:8000/~/pages/404.css' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.
+    -->
+    <!--<link rel="stylesheet", href="./404.css">-->
+    <!--<link rel="stylesheet", href="~/pages/404.css">-->
 </head>
 <body>
+    <style>
+        div {
+            display: flex;
+            flex-direction: column;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body {
+            background: #3a015c;
+            background: linear-gradient(#3a015c, #11001c)
+        }
+
+        h1, p {
+            color: whitesmoke;
+        }
+    </style>
+    
     <div>
         <h1>#title#</h1>
         <img src="#img#"/>

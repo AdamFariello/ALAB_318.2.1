@@ -9,3 +9,12 @@ div {
     justify-content: center;
     align-items: center;
 }
+
+body {
+    background: #3a015c;
+    background: linear-gradient(#3a015c, #11001c)
+}
+
+h1, p {
+    color: whitesmoke;
+}
