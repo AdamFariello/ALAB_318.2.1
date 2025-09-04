@@ -2,15 +2,10 @@
 import express from "express";
 import fs from "fs";
 
-/* Use if it's .js
-const { error } = require("console");
-const express = require("express");
-*/
-
 const app = express();
 const port = 8000;
 
-//app.use(express.json());
+
 
 app.engine("html", (filePath, options, callback) => {
   fs.readFile(filePath, (err, content) => {
@@ -21,16 +16,15 @@ app.engine("html", (filePath, options, callback) => {
     let rendered;
 
     if (options.title) {
-      rendered = content
-        .toString()
-        .replaceAll("#title#", options.title)
-        .replace("#content#", options.content)
-        .replace("#img#", options.img);
+      rendered = content.toString()
+                        .replaceAll("#title#", options.title)
+                        .replace("#content#", options.content)
+                        .replace("#img#", options.img);
     } else {
-      rendered = content
-        .toString()
-        .replaceAll("#img#", options.img)
-        .replace("#content#", options.content);
+      rendered = content.toString()
+                        .replaceAll("#img#", options.img)
+                        .replace("#content#", options.content)
+                        .replace("#forumSub#", options.forum);
     }
 
     return callback(null, rendered);
@@ -39,8 +33,6 @@ app.engine("html", (filePath, options, callback) => {
 //First paramater is a ARGUMENT you're trying to set
 app.set("views", "./pages"); // Specify directory
 app.set("view engine", "html"); // Register template engine (and extention to look for)
-
-
 
 app.get("/", (req, res) => {
   let option = {
@@ -55,7 +47,8 @@ app.get("/", (req, res) => {
 app.get("/tea", (req, res) => {
   let option = {
     content: "tea time!",
-    img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FOs2Az5qAUancc%2Fgiphy.gif&f=1&nofb=1&ipt=012ab42b19d5aa7a7fa55e7783c5e7aaa6881041795c4bf7f5d8b51fc7cdad6a"
+    img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FOs2Az5qAUancc%2Fgiphy.gif&f=1&nofb=1&ipt=012ab42b19d5aa7a7fa55e7783c5e7aaa6881041795c4bf7f5d8b51fc7cdad6a",
+    forum: "Enter thy name, tea enjoyer: "
   }
   res.render("418", option);
 });
@@ -69,8 +62,10 @@ app.get("/get", (req,res) => {
 app.post("/post", (req, res) => {
     res.write("POST example");
 });
-
-
+app.post("/some", (req,res) => {
+    res.write("Hello!");
+    //console.log(res.json());
+})
 
 app.listen(port, () => {
     console.log(`Server running on localhost:${port}`);

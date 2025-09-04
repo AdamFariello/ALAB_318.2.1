@@ -20,8 +20,9 @@
         }
 
         body {
+            /*TODO: make obs+ffmpeg of css being updated despite no server restart*/
             background: #A18A69;
-            background: linear-gradient(to bottom right, #BEAA8E, #9A8160)
+            background: linear-gradient(to top left, #BEAA8E, #9A8160)
         }
 
         h1, p {
@@ -32,6 +33,15 @@
     <div>
         <img src="#img#"/>
         <p>#content#</p>
+
+        <form action="/some" method="POST">
+            <label>#forumSub#
+                <input type="text" />
+            </label>
+            <input type="submit" />
+      </form>
+
+        <a href="/">wrong page?</a>
     </div>
 </body>
 </html>
