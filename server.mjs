@@ -20,7 +20,7 @@ app.engine("html", (filePath, options, callback) => {
     
     let rendered;
 
-    if (options.img) {
+    if (options.title) {
       rendered = content
         .toString()
         .replaceAll("#title#", options.title)
@@ -29,7 +29,7 @@ app.engine("html", (filePath, options, callback) => {
     } else {
       rendered = content
         .toString()
-        .replaceAll("#title#", options.title)
+        .replaceAll("#img#", options.img)
         .replace("#content#", options.content);
     }
 
@@ -41,6 +41,7 @@ app.set("views", "./pages"); // Specify directory
 app.set("view engine", "html"); // Register template engine (and extention to look for)
 
 
+
 app.get("/", (req, res) => {
   let option = {
     title:"Your princess is in another castle",
@@ -50,6 +51,16 @@ app.get("/", (req, res) => {
   }
   res.render("404", option);
 });
+
+app.get("/tea", (req, res) => {
+  let option = {
+    content: "tea time!",
+    img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FOs2Az5qAUancc%2Fgiphy.gif&f=1&nofb=1&ipt=012ab42b19d5aa7a7fa55e7783c5e7aaa6881041795c4bf7f5d8b51fc7cdad6a"
+  }
+  res.render("418", option);
+});
+
+
 
 
 app.get("/get", (req,res) => {

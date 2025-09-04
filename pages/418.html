@@ -3,17 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404</title>
-
-    <!--TODO: highlight logic error of css not loading since of express server-->
-    <!--
-    Error is actually: 
-    Refused to apply style from 'http://localhost:8000/~/pages/404.css' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.
-    
-    So basically, don't include .css (for now)
-    -->
-    <!--<link rel="stylesheet", href="./404.css">-->
-    <!--<link rel="stylesheet", href="~/pages/404.css">-->
+    <title>418</title>
 </head>
 <body>
     <style>
@@ -30,8 +20,8 @@
         }
 
         body {
-            background: #3a015c;
-            background: linear-gradient(#3a015c, #11001c)
+            background: #A18A69;
+            background: linear-gradient(to bottom right, #BEAA8E, #9A8160)
         }
 
         h1, p {
@@ -40,7 +30,6 @@
     </style>
 
     <div>
-        <h1>#title#</h1>
         <img src="#img#"/>
         <p>#content#</p>
     </div>
