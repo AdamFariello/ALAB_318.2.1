@@ -1,9 +1,11 @@
 
 import express from "express";
 import fs from "fs";
+import timer from "./middleware/timer.mjs";
 
 const app = express();
 const port = 8000;
+app.use(timer);
 
 
 
